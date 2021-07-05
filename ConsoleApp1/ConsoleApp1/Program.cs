@@ -24,11 +24,11 @@ namespace HTTPGetAPP
         {
             try
             {
-                string url = "https://webapi.fpc.cl/papelespowerbi/powerbi/pantalla_maq";     // TOMA JSON DESDE LA API
+                string url = "https://webapi.fpc.cl/papelespowerbi/powerbi/pantalla_maq";     
                 HttpResponseMessage response =
                     await client.GetAsync(url);
                 response.EnsureSuccessStatusCode();
-                string responseBody = await response.Content.ReadAsStringAsync();                 //TRANSFORMA CONTENIDO JSON A STRING
+                string responseBody = await response.Content.ReadAsStringAsync();                 
 
                 
 
@@ -40,7 +40,7 @@ namespace HTTPGetAPP
                     using EventDataBatch eventBatch = await producerClient.CreateBatchAsync();
 
                     
-                    eventBatch.TryAdd(new EventData(Encoding.UTF8.GetBytes(responseBody)));  // carga json a eventhub
+                    eventBatch.TryAdd(new EventData(Encoding.UTF8.GetBytes(responseBody)));  
                     
 
                     
